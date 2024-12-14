@@ -1,6 +1,9 @@
+import SideNav from "../ui/base/sidenav"
 
 export default function  Base(){
     return (
-        <div></div>
+        <>
+            <SideNav/>
+        </>
     )
 }

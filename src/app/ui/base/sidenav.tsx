@@ -5,24 +5,28 @@ import { PowerIcon } from '@heroicons/react/24/outline';
 
 export default function SideNav() {
   return (
-    <div className="flex h-full flex-col px-3 py-4 md:px-2">
-      <Link
-        className="mb-2 flex h-20 items-end justify-start rounded-md bg-blue-600 p-4 md:h-40"
-        href="/"
-      >
-        <div className="w-32 text-white md:w-40">
-          <AcmeLogo />
-        </div>
-      </Link>
-      <div className="flex grow flex-row justify-between space-x-2 md:flex-col md:space-x-0 md:space-y-2">
-        <NavLinks />
-        <div className="hidden h-auto w-full grow rounded-md bg-gray-50 md:block"></div>
-        <form>
-          <button className="flex h-[48px] w-full grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3">
-            <PowerIcon className="w-6" />
-            <div className="hidden md:block">Sign Out</div>
-          </button>
-        </form>
+    <div className="d-flex flex-column align-items-stretch flex-shrink-0 bg-body-tertiary" 
+      style={{width: 380}}>
+    
+      <a href="#" className="d-flex align-items-center flex-shrink-0 p-3 link-body-emphasis text-decoration-none border-bottom">
+        <span className="fs-5 fw-semibold">Endpoints</span>
+      </a>
+
+      <div className="list-group list-group-flush border-bottom scrollarea">
+        <a href="#" className="list-group-item list-group-item-action active py-3 lh-sm" aria-current="true">
+          <div className="d-flex w-100 align-items-center justify-content-between">
+            <strong className="mb-1">List group item heading</strong>
+            <small>Wed</small>
+          </div>
+          <div className="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
+        </a>
+        <a href="#" className="list-group-item list-group-item-action py-3 lh-sm">
+          <div className="d-flex w-100 align-items-center justify-content-between">
+            <strong className="mb-1">List group item heading</strong>
+            <small className="text-body-secondary">Tues</small>
+          </div>
+          <div className="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
+        </a>
       </div>
     </div>
   );
