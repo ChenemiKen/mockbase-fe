@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export function fetchEndpoints(){
-    axios.get("http://localhost:5010/api/v1/endpoints")
-    .then(res => console.log(res.data))
+export async function fetchEndpoints(){
+    return axios.get("http://localhost:5010/api/v1/endpoints")
+    .then(res => res.data)
 }
