@@ -13,12 +13,12 @@ export default function SideNav() {
   }, [])
 
   return (
-    <div className="d-flex flex-column align-items-stretch flex-shrink-0 bg-body-tertiary" 
-      style={{width: 380}}>
+    <div className="d-flex flex-column align-items-stretch flex-shrink-0 bg-body-tertiary" style={{width: 300}}>
     
-      <a href="#" className="d-flex align-items-center flex-shrink-0 p-3 link-body-emphasis text-decoration-none border-bottom">
-        <span className="fs-5 fw-semibold">Endpoints</span>
-      </a>
+      <div className="p-3 d-flex w-100 align-items-center justify-content-between link-body-emphasis border-bottom">
+        <span className="">Endpoints</span>
+        <span className="ml-auto"><button className='btn btn-primary btn-sm'>+ Add</button></span>
+      </div>
 
       <div className="list-group list-group-flush border-bottom scrollarea">
         {endpoints.map(endpoint => 
