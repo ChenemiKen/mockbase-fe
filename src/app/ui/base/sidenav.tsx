@@ -22,8 +22,8 @@ export default function SideNav() {
 
       <div className="list-group list-group-flush border-bottom scrollarea">
         {endpoints.map(endpoint => 
-          <a href="#" className="list-group-item list-group-item-action py-3 lh-sm" aria-current="true">
-            <div key={endpoint.id} className="d-flex w-100 align-items-center justify-content-between">
+          <a key={endpoint.id} href="#" className="list-group-item list-group-item-action py-3 lh-sm" aria-current="true">
+            <div className="d-flex w-100 align-items-center justify-content-between">
               <strong className="mb-1">{endpoint.path}</strong>
               <small>{endpoint.method}</small>
             </div>
