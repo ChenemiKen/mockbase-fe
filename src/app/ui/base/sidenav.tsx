@@ -13,21 +13,20 @@ export default function SideNav() {
   }, [])
 
   return (
-    <div className="d-flex flex-column align-items-stretch flex-shrink-0 bg-body-tertiary" style={{width: 300}}>
-    
+    <div data-bs-theme="dark">
       <div className="p-3 d-flex w-100 align-items-center justify-content-between link-body-emphasis border-bottom">
-        <span className="">Endpoints</span>
-        <span className="ml-auto"><button className='btn btn-primary btn-sm'>+ Add</button></span>
+        <span className="text-light">Endpoints</span>
+        <small className="ml-auto"><button className='btn btn-primary btn-sm'>+ </button></small>
       </div>
 
       <div className="list-group list-group-flush border-bottom scrollarea">
         {endpoints.map(endpoint => 
-          <a key={endpoint.id} href="#" className="list-group-item list-group-item-action py-3 lh-sm" aria-current="true">
-            <div className="d-flex w-100 align-items-center justify-content-between">
-              <strong className="mb-1">{endpoint.path}</strong>
+          <a key={endpoint.id} href="#" className="list-group-item list-group-item-action pt-2 lh-sm" aria-current="true">
+            <div className="d-flex align-items-center justify-content-between">
+              <p className="mb-1">{endpoint.path}</p>
               <small>{endpoint.method}</small>
             </div>
-            <div className="col-10 mb-1 small">{endpoint.method} : {endpoint.path}</div>
+            <div className="col-10 small">{endpoint.method} : {endpoint.path}</div>
           </a>
         )}
         {/* <a href="#" className="list-group-item list-group-item-action py-3 lh-sm">
