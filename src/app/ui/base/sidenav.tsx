@@ -1,17 +1,4 @@
-import Link from 'next/link';
-import NavLinks from "@/app/ui/base/navLinks";
-import AcmeLogo from '@/app/ui/acme-logo';
-import { PowerIcon } from '@heroicons/react/24/outline';
-import { useEffect, useState } from 'react';
-import { fetchEndpoints } from '@/app/lib/base/base';
-
-export default function SideNav() {
-  const [endpoints, setEndpoints] = useState<Endpoint[]>([])
-
-  useEffect(() => {
-    fetchEndpoints().then(data => setEndpoints(data))
-  }, [])
-
+export default function SideNav({endpoints}:{endpoints: Endpoint[]}) {  
   return (
     <div data-bs-theme="dark">
       <div className="p-3 d-flex w-100 align-items-center justify-content-between link-body-emphasis border-bottom">

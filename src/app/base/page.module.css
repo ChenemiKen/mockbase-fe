@@ -29,3 +29,7 @@
     padding: 1.5rem;
     overflow-y: auto;
 }
+
+.textArea {
+    resize: vertical;
+}

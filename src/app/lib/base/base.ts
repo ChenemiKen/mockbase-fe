@@ -14,6 +14,7 @@ export async function createEndpoint(formData: FormData) {
     const endpoint: Endpoint = {
         method: formData.get('method')!.toString(),
         path: formData.get('path')!.toString(),
+        responseBody: formData.get('responseBody')!.toString(),
     }
 
     const validatedFields = schema.safeParse({...endpoint})

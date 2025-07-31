@@ -4,10 +4,16 @@ import { useEffect, useRef, useState } from "react";
 import Body from "../ui/base/body";
 import SideNav from "../ui/base/sidenav"
 import styles from "./page.module.css";
+import { fetchEndpoints } from "../lib/base/base";
 
 export default function Base(){
     const [sideBarWidth, setSideBarWidth] = useState("250px");
     const isResizing = useRef(false);
+    const [endpoints, setEndpoints] = useState<Endpoint[]>([])
+
+    useEffect(() => {
+        fetchEndpoints().then(data => setEndpoints(data))
+    }, [])
 
     function onMouseDown(){
         isResizing.current = true;
@@ -34,14 +40,14 @@ export default function Base(){
           window.removeEventListener("mousemove", onMouseMove);
           window.removeEventListener("mouseup", onMouseUp);
         };
-      }, []);
+    }, []);
 
     return (
         <>
             <div className={styles.dashboardContainer}>
                 {/* <!-- Sidebar --> */}
                 <div className={styles.sidebar} style={{width: sideBarWidth}}>
-                    <SideNav/>
+                    <SideNav endpoints={endpoints}/>
                 </div>
 
                 {/* <!-- Resizer --> */}
@@ -49,7 +55,7 @@ export default function Base(){
 
                 {/* <!-- Main Content --> */}
                 <div className={styles.mainContent} id="main-content">
-                    <Body/>
+                    <Body setEndpoints={setEndpoints}/>
                 </div>
             </div>
         </>
