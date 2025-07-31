@@ -2,8 +2,6 @@ import { createEndpoint } from "@/app/lib/base/base";
 
 export default function Body(){
 
-    
-
     return(
         <div className="container-fluid">
             <form action={createEndpoint} data-bs-theme="dark">

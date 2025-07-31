@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <h1>MockBase</h1>
+        <h1 className="fw-bold">MockBase</h1>
 
         <div className={styles.ctas}>
           <Link
@@ -15,14 +15,14 @@ export default function Home() {
         </div>
       </main>
       <footer className={styles.footer}>
-        <p>
+        <small>
           &copy; built by&nbsp;
           <a
             href="https://github.com/chenemiken"
             target="_blank"
             rel="noopener noreferrer"
-          > ChenemiKen </a>
-        </p>
+          > @ChenemiKen </a>
+        </small>
       </footer>
     </div>
   );

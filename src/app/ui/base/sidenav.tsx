@@ -9,7 +9,7 @@ export default function SideNav() {
   const [endpoints, setEndpoints] = useState<Endpoint[]>([])
 
   useEffect(() => {
-      fetchEndpoints().then(data => setEndpoints(data))
+    fetchEndpoints().then(data => setEndpoints(data))
   }, [])
 
   return (
