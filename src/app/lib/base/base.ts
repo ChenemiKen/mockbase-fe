@@ -8,15 +8,7 @@ const schema = z.object({
     path: z.string({})
 })
 
-export async function createEndpoint(formData: FormData) {
-    console.log(formData)
-    
-    const endpoint: Endpoint = {
-        method: formData.get('method')!.toString(),
-        path: formData.get('path')!.toString(),
-        responseBody: formData.get('responseBody')!.toString(),
-    }
-
+export async function createEndpoint(endpoint: Endpoint) {    
     const validatedFields = schema.safeParse({...endpoint})
 
     return axios.post(`${SERVER}/endpoints`, endpoint).then( res => res.data)

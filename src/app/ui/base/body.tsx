@@ -1,14 +1,32 @@
 import { createEndpoint } from "@/app/lib/base/base";
-import { Dispatch, SetStateAction } from "react";
+import { ChangeEvent, Dispatch, SetStateAction, useRef, useState } from "react";
+import Editor from '@monaco-editor/react';
+import {editor} from 'monaco-editor'
 
 type Props = {
   setEndpoints: Dispatch<SetStateAction<Endpoint[]>>
 };
 
 export default function Body({setEndpoints}: Props){
+    const editorRef = useRef<editor.IStandaloneCodeEditor | null>(null);
+    const [editorLanguage, setEditorLanguage] = useState<string>('plaintext')
+
+    function handleEditorDidMount(editor: editor.IStandaloneCodeEditor) {
+        editorRef.current = editor;
+    }
+
+    function changeEditorLanguage(event: ChangeEvent<HTMLSelectElement>){
+        setEditorLanguage(event.target.value)
+    }
 
     function submit(formData: FormData){
-        createEndpoint(formData).then(res => {
+        const endpoint: Endpoint = {
+            method: formData.get('method')!.toString(),
+            path: formData.get('path')!.toString(),
+            responseBody: editorRef.current?.getValue(),
+        }
+        
+        createEndpoint(endpoint).then(res => {
             setEndpoints((endpoints) => [...endpoints, res])
         })
     }
@@ -35,9 +53,22 @@ export default function Body({setEndpoints}: Props){
                 </div>
                 <div className="mb-3 col-10">
                     <label htmlFor="exampleFormControlTextarea1" className="form-label">
-                        <small>expected response body</small>
+                        <small className="me-5">expected response body</small>
+                        <select onChange={changeEditorLanguage}>
+                            <option value="plaintext">plaintext</option>
+                            <option value="json">json</option>
+                            <option value="xml">xml</option>
+                            <option value="html">html</option>
+                            <option value="javascript">javascript</option>
+                        </select>
                     </label>
-                    <textarea name="responseBody" className="form-control textArea" rows={10}></textarea>
+                    <Editor
+                        height="50vh"
+                        defaultLanguage= {editorLanguage}
+                        language= {editorLanguage}
+                        theme="vs-dark"
+                        onMount={handleEditorDidMount}
+                    />
                 </div>
             </form>
         </div>
